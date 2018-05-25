@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<title>IoT Switch</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h5 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+    background-image: url('http://www.solidbackgrounds.com/images/2560x1440/2560x1440-pastel-pink-solid-color-background.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-text-white">
+  <div class="w3-display-middle w3-jumbo">
+    <p>IoT Switch</p>
+  </div>
+
+
+<div id="app">
+ <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBPrBkSfR-_FvecNEkMlo1BO26gCdefJf4",
+    authDomain: "iotproject-39207.firebaseapp.com",
+    databaseURL: "https://iotproject-39207.firebaseio.com",
+    projectId: "iotproject-39207",
+    storageBucket: "iotproject-39207.appspot.com",
+    messagingSenderId: "628757068971"
+  };
+  firebase.initializeApp(config);
+    
+      var controlRef = firebase.database().ref('control');
+      $('#app').html(`
+            
+          <p> <button onclick="firebaseSwitch(1)" class="w3-button w3-black">Switch on</button></p>
+          
+          <p> <button onclick="firebaseSwitch(2)" class="w3-button w3-black">Switch off</button></p>
+        `);
+        function firebaseSwitch(state){
+            switch(state){
+                case 1: 
+                    controlRef.set({
+                        state: state,
+                        light1: 1
+                    });                     
+                    break;
+                case 2:
+                    controlRef.set({
+                        state: state,
+                        light1: 0
+                    });                     
+                    break;            
+            }
+        }
+    </script>
+    
+
+</div>
+
+
+
+  <div class="w3-display-bottomleft w3-container">
+    <p class="w3-xlarge">Created by</p>
+    <p class="w3-large">EJ Villegas</p>
+    <p class="w3-large">Criscia Dama</p>
+  </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
+
+
